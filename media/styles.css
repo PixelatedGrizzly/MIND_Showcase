@@ -24,3 +24,12 @@ body, html {
   text-align: center;
   border-radius: 15px;
 }
+
+.slide {
+  height: 400px;
+  width: 100%;
+}
+
+.navbar-header {
+  width: 100%;
+}
