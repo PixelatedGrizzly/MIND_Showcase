@@ -4,8 +4,16 @@
     <meta charset="utf-8">
     <link href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
     <title>MIND Showcase</title>
+    <link rel="stylesheet" href="./media/styles.css">
   </head>
   <body>
+
+
+<div class="splasher">
+  <img class="logo_splasher" src="./media/image/logo.jpg" alt="LOGO MindLab">
+</div>
+<div class="container">
+
 
 <?php
 include_once('datasource/connect.php');
@@ -18,3 +26,9 @@ foreach ($usersList as $user) {
   );
 }
 ?>
+
+<div class="project_list">
+
+</div>
+
+</div>
