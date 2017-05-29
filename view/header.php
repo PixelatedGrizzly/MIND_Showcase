@@ -8,11 +8,12 @@
   </head>
   <body>
 
-
-<div class="splasher">
-  <img class="logo_splasher" src="./media/image/logo.jpg" alt="LOGO MindLab">
-</div>
-<div class="container">
+<?php if (strpos($_SERVER['SCRIPT_NAME'], 'index.php') !== false){ ?>
+    <div class="splasher">
+    <img class="logo_splasher" src="./media/image/logo.jpg" alt="LOGO MindLab">
+    </div>
+    <div class="container">
+<?php } ?>
 
 
 <?php
