@@ -46,25 +46,12 @@
         <button type="submit" class="btn btn-default">Search</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Connexion</a></li>
+        <li><a href="view/connectionForm.php">Connexion</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
-
-
-<?php
-include_once('datasource/connect.php');
-$db = new ConnectionInstance();
-$usersList = $db->selectAllUsers();
-
-/**foreach ($usersList as $user) {
-  print(
-    "<p>Nom = ".$user['nom_Util']." ; Prénom = ".$user['prenom_Util']." ; Login = ".$user['login_Util']."</p>"
-  );
-}**/
-?>
 
 <div class="project_list">
 
