@@ -25,11 +25,15 @@ body, html {
   border-radius: 15px;
 }
 
-.slide {
-  height: 400px;
-  width: 100%;
-}
 
 .navbar-header {
   width: 100%;
+}
+
+.slide {
+  height: 200px;
+}
+
+.gridPic {
+  height: 100px;
 }
