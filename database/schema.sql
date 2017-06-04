@@ -20,7 +20,7 @@ CREATE TABLE Projet (
 
 CREATE TABLE Media (
   id_Media INT NOT NULL AUTO_INCREMENT,
-  cheminFichier_Media VARCHAR(30) NOT NULL,
+  cheminFichier_Media VARCHAR(200) NOT NULL,
   type_Media VARCHAR(30) NOT NULL,
   id_Proj_Media INT NOT NULL,
   PRIMARY KEY (id_Media),

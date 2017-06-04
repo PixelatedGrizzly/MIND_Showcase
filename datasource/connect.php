@@ -21,20 +21,23 @@ class ConnectionInstance
 
   public function insert($table,$data){
     $field_list = '';
-    $value_list = '';
+    $field_param = '';
     foreach ($data as $key => $value) {
         $field_list .= ",$key";
-        $field_param .= ",:'" .$key. "'";
+        $field_param .= ",:$key";
     }
-    $stmt=$this->pdo->prepare('INSERT INTO ' . $table . '(' . trim($field_list, ',') . ') VALUES (' . trim($value_list, ',') . ')');
+    $query='INSERT INTO ' . $table . '(' . trim($field_list, ',') . ') VALUES (' . trim($field_param, ',') . ')';
+    echo $query;
+    $stmt=$this->pdo->prepare($query);
     return $stmt->execute($data);;
   } 
 
   //récuperer le premier ligne dans database 
   function get_row($sql) {
+      echo "<br>".$sql;
       $sth=$this->pdo->prepare($sql);
       $sth->execute();
-      return $sth->fetch(PDO::FETCH_ASOC);
+      return $sth->fetch(PDO::FETCH_ASSOC);
   }
 
   //Faire des require sur les fichiers de ce dossier pour inclure l'ensemble des fonctions possibles par table
