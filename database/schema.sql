@@ -12,6 +12,7 @@ CREATE TABLE Projet (
   id_Proj INT NOT NULL AUTO_INCREMENT,
   titre_Proj VARCHAR(30) NOT NULL,
   desc_Proj VARCHAR(150),
+  nb_part INT NOT NULL,
   id_Util_Proj INT NOT NULL,
   PRIMARY KEY (id_Proj),
   FOREIGN KEY (id_Util_Proj) REFERENCES Utilisateur(id_Util)
