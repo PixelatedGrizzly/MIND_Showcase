@@ -67,14 +67,11 @@
 
             $sql="select * from projet where titre_Proj='".$titre."' and desc_Proj='".$desc."'";
             $result=$connect->get_row($sql);
-            echo "<pre>";
-            print_r($result);
             $data2=array(
                 "cheminFichier_Media"=>$path.$name_file,
                 "type_Media"=>$type_file,
                 "id_Proj_Media"=>$result['id_Proj']
                 );
-            print_r($data2);
             $connect->insert('media',$data2);
          }
     }

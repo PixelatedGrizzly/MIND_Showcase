@@ -27,14 +27,12 @@ class ConnectionInstance
         $field_param .= ",:$key";
     }
     $query='INSERT INTO ' . $table . '(' . trim($field_list, ',') . ') VALUES (' . trim($field_param, ',') . ')';
-    echo $query;
     $stmt=$this->pdo->prepare($query);
     return $stmt->execute($data);;
   } 
 
   //récuperer le premier ligne dans database 
   function get_row($sql) {
-      echo "<br>".$sql;
       $sth=$this->pdo->prepare($sql);
       $sth->execute();
       return $sth->fetch(PDO::FETCH_ASSOC);
