@@ -37,3 +37,16 @@ body, html {
 .gridPic {
   height: 100px;
 }
+.titreProj{
+  text-align: center;
+  font-size: 29px;
+  font-weight: bold;
+  padding-top: 20px;
+}
+.imgProj {
+  width: 100%;
+  border: 2px solid #0080ff;
+}
+.desProj{
+  font-size: 17px;
+}
