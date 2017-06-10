@@ -10,3 +10,7 @@ INSERT INTO Projet (titre_Proj, desc_Proj, id_Util_Proj) VALUES ('Moto électriq
 INSERT INTO Media (cheminFichier_Media, type_Media, id_Proj_Media) VALUES ('1.jpg', 'image', 1);
 INSERT INTO Media (cheminFichier_Media, type_Media, id_Proj_Media) VALUES ('2.jpg', 'image', 2);
 INSERT INTO Media (cheminFichier_Media, type_Media, id_Proj_Media) VALUES ('3.jpg', 'image', 3);
+
+INSERT INTO Actualites (contenu,id_Proj_Act) VALUES ("Contenu 1",1);
+INSERT INTO Actualites (contenu,id_Proj_Act) VALUES ("Contenu 2",2);
+INSERT INTO Actualites (contenu,id_Proj_Act) VALUES ("Contenu 3",3);

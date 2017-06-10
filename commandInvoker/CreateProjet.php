@@ -6,6 +6,7 @@
         $titre=addslashes(trim($_POST['titre']));
         $desc=addslashes(trim($_POST['desc']));
         $nb_part=addslashes(trim($_POST['nb_part']));
+        $actualite=addslashes(trim($_POST['actualite']));
 
         $id_Util_Proj=1; //test, on va changer apès par session['utilisateur']
 
@@ -17,15 +18,23 @@
             );
         $connect->insert('projet',$data);
 
-        if(isset($_FILES['file']['name'])){
+
+        $sql="select * from projet where titre_Proj='".$titre."' and desc_Proj='".$desc."'";
+        $result=$connect->get_row($sql);
+
+         $data=array(
+            'contenu'=>$actualite,
+            'id_Proj_Act'=>$result['id_Proj']
+        );
+        $connect->insert('actualites',$data);
+
+        if($_FILES['file']['name']!=""){
             $type_file=$_FILES['file']['type'];
             $name_file=$_FILES['file']['name'];
             $tmp_name=$_FILES['file']['tmp_name'];
             $path="../media/image_projet/";
             move_uploaded_file($tmp_name, $path.$name_file);
 
-            $sql="select * from projet where titre_Proj='".$titre."' and desc_Proj='".$desc."'";
-            $result=$connect->get_row($sql);
             $data2=array(
                 "cheminFichier_Media"=>$path.$name_file,
                 "type_Media"=>$type_file,

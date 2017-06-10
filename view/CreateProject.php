@@ -13,18 +13,22 @@
 	<div class="row">
         <div class="col-md-12">
                 <h3 class="text-center" style="border-bottom: solid"> Ajouter d'une nouvelle projet</h3>
-                <form method="POST" action="../commandInvoker/CreatProjet.php"  enctype="multipart/form-data" >
+                <form method="POST" action="../commandInvoker/CreateProjet.php"  enctype="multipart/form-data" >
                     <div class="form-group">
                         <label>Le titre du projet</label>
                         <input type="text" class="form-control" name="titre" >
                     </div>
                     <div class="form-group">
                         <label>Desciption du projet</label>
-                         <textarea name="desc" class="form-control" rows="5" style="margin-bottom: 10px"></textarea>
+                         <textarea name="desc" class="form-control" rows="3" style="margin-bottom: 10px"></textarea>
                     </div>
                     <div class="form-group">
                         <label>Le nombre des participants</label>
                         <input type="text" class="form-control" name="nb_part" >
+                    </div>
+                    <div class="form-group">
+                        <label>Actualité du projet</label>
+                         <textarea name="actualite" class="form-control" rows="8" style="margin-bottom: 10px"></textarea>
                     </div>
                     <div class="form-group">
                         <label>Choisiez un file</label>
