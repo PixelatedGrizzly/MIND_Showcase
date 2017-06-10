@@ -38,10 +38,10 @@ body, html {
   height: 100px;
 }
 .titreProj{
-  text-align: center;
   font-size: 29px;
   font-weight: bold;
   padding-top: 20px;
+  text-align: center;
 }
 .imgProj {
   width: 100%;
@@ -49,4 +49,11 @@ body, html {
 }
 .desProj{
   font-size: 17px;
+  text-align: justify;
+}
+.btn_social{
+  display: flex !important;
+}
+.btn_share{
+  padding-left: 5px;
 }
