@@ -1,7 +1,11 @@
-    <?php 
+    <?php
     require_once '../datasource/connect.php';
      $connect= new ConnectionInstance();
-     $id_Proj = 1;// test
+     if($_GET['id'] !== null){
+       $id_Proj = $_GET['id'];
+     }else {
+       $id_Proj = 1;
+     }
      $sql="select * from projet where id_Proj='".$id_Proj."'";
                 $result=$connect->get_row($sql);
     $sqlactualite = "select * from actualites where id_Proj_Act='".$id_Proj."'";
@@ -20,7 +24,7 @@
 
 
     	<div class="container">
-    		
+
     		<div class="row">
     			<div class="col-md-8">
                 <div class="titreProj"><?php echo $result['titre_Proj'] ?></div>
@@ -28,17 +32,17 @@
                 <div class="pull-right"> Nombre participant : <?php echo $result['nb_part'] ?></div><br>
                 <img class="imgProj" src="../media/image/3.jpg" alt="projet3"></img>
                 <div class="contenuProj"><?php echo $actualite['contenu'] ?> </div>
-                
+
 
                 <div id="player" ></div>
                 <div style="padding-top: 20px;">
-                
+
                 <div class="btn_social">
                 <div class="btn_share">
     <a href="https://twitter.com/share" class="twitter-share-button" data-text="MINF Showcase" data-via="MIND_Showcase" data-size="large">Tweet</a>
     </div>
     <div id="fb-root" class="btn_share"></div>
-            
+
 
             <!-- Your share button code -->
             <div class="fb-share-button" data-href="https://www.kickstarter.com/" data-layout="button" data-size="large" data-mobile-iframe="true">
@@ -48,7 +52,7 @@
     </div>
     <div class="fb-comments" data-href="http://localhost/projet/MIND_Showcase/view/consulterProjet.php" data-numposts="10"></div>
                 </div>
-                
+
 
 
 
@@ -81,11 +85,11 @@
               </div>
             			</div>
     		</div>
-    		
+
         </div>
 
 
-           
+
 
         <!-- 1.script btn twitter -->
         <script>!function(d,s,id){
