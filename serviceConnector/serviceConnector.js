@@ -22,8 +22,8 @@ class ServiceConnector {
         })
         .fail(function() {
           maxAttempt--;
-          this.sendRequest();
-          console.log("Connection to " + address + " failed, " + maxAttempt + " attempts left...")
+          console.log("Connection to " + address + " failed, next try in 3 seconds, " + maxAttempt + " attempts left...");
+          setTimeout(function(){ this.sendRequest() }, 3000);
         })
         .always(function() {
 
