@@ -1,20 +1,57 @@
 class ServiceConnector {
-  constructor(_address, _method, _data) {
+  constructor(_address, _method, _data, _authorization) {
     this.data = _data;
     this.address = _address;
     this.method = _method;
+    this.authorization = _authorization;
     this.result = "";
+
 
     this.maxAttempt = 3;
     this.tryCount = 0;
   }
 
-  sendRequest() {
+  sendRequest(callback){
     var jqxhr = $.ajax({
         url: this.address,
-        async: true,
-        data: this.data,
+        data: JSON.stringify(this.data),
         method: this.method,
+        dataType: 'application/json',
+        beforeSend: function(xhr){xhr.setRequestHeader('Authorization', this.authorization);},
+        context: this,
+        error: function(xhr, textStatus, errorThrown) {
+          console.log(errorThrown);
+          return;
+          this.tryCount++;
+          if (this.tryCount <= this.maxAttempt) {
+            //try again
+            console.log("Connection to " + this.address + " failed, next try in 3 seconds, " + (this.maxAttempt - this.tryCount) + " attempts left...");
+
+            var that = this;
+            setTimeout(function() {
+              that.sendRequest();
+            }, 3000);
+          }
+          return;
+        }
+      })
+      .done(function(res) {
+        console.log(res);
+        //callback(res);
+      })
+      .always(function() {
+
+      });
+  }
+
+  sendRequestRPC(callback) {
+    var jqxhr = $.ajax({
+        url: this.address,
+        data: JSON.stringify(this.data),
+        method: this.method,
+        //dataType: 'jsonp',
+        contentType: 'application/json-rpc',
+        //beforeSend: function(xhr){xhr.setRequestHeader('Authorization', this.authorization);},
         context: this,
         error: function(xhr, textStatus, errorThrown) {
           this.tryCount++;
@@ -26,16 +63,12 @@ class ServiceConnector {
             setTimeout(function() {
               that.sendRequest();
             }, 3000);
-
-
-            return;
           }
           return;
-
         }
       })
       .done(function(res) {
-        console.log(res.body);
+        callback(res);
       })
       .always(function() {
 

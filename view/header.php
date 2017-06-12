@@ -2,16 +2,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <link href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="utf-8" />
     <title>MIND Showcase</title>
-    <link rel="stylesheet" href="./media/styles.css">
 
-    <link rel="stylesheet" href="lib/OwlCarousel2-2.2.1/dist/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="lib/OwlCarousel2-2.2.1/dist/assets/owl.theme.default.min.css">
-    <script type="text/javascript" src="lib\jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="lib\bootstrap-3.3.7-dist\js\bootstrap.js"></script>
-    <script type="text/javascript" src="lib\OwlCarousel2-2.2.1\dist\owl.carousel.min.js"></script>
+     <?php
+     if (strpos($_SERVER['SCRIPT_NAME'], 'index.php') == false)
+      $prefix = "../";
+      else {
+        $prefix = "";
+      }
+     ?>
+    <link href="<?php echo $prefix; ?>lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo $prefix; ?>media/styles.css">
+    <link rel="stylesheet" href="<?php echo $prefix; ?>lib/OwlCarousel2-2.2.1/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="<?php echo $prefix; ?>lib/OwlCarousel2-2.2.1/dist/assets/owl.theme.default.min.css">
+    <script type="text/javascript" src="<?php echo $prefix; ?>lib\jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="<?php echo $prefix; ?>lib\bootstrap-3.3.7-dist\js\bootstrap.js"></script>
+    <script type="text/javascript" src="<?php echo $prefix; ?>lib\OwlCarousel2-2.2.1\dist\owl.carousel.min.js"></script>
+    <script type="text/javascript" src="<?php echo $prefix; ?>serviceConnector/serviceConnector.js"></script>
+    <script type="text/javascript" src="<?php echo $prefix; ?>vendor/hmacsha1/index.js"></script>
+
   </head>
   <body>
 
