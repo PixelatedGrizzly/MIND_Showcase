@@ -14,3 +14,8 @@ Creator's Access Token:
 XY1sMPEYrkuUJYUseY6fB73Ik2sNDm
 Creator's Refesh Token:
 ABREDCNryaDrWsXUZN7iSF3vOZ0CvU
+
+
+facebook credentials:
+mind.showcase@tutanota.com
+pass : lo102016p17

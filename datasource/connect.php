@@ -29,9 +29,9 @@ class ConnectionInstance
     $query='INSERT INTO ' . $table . '(' . trim($field_list, ',') . ') VALUES (' . trim($field_param, ',') . ')';
     $stmt=$this->pdo->prepare($query);
     return $stmt->execute($data);;
-  } 
+  }
 
-  //récuperer le premier ligne dans database 
+  //récuperer le premier ligne dans database
   function get_row($sql) {
       $sth=$this->pdo->prepare($sql);
       $sth->execute();
@@ -39,6 +39,26 @@ class ConnectionInstance
   }
 
   //Faire des require sur les fichiers de ce dossier pour inclure l'ensemble des fonctions possibles par table
+
+  public function selectAllProjects(){
+    $projets = array();
+    $result =  $this->pdo->query('SELECT * from projet');
+    while($temp = $result->fetch())
+    {
+      array_push($projets, $temp);
+    }
+    return $projets;
+  }
+
+  public function selectMediasFromProject($idProj){
+    $medias = array();
+    $result =  $this->pdo->query('SELECT * from media WHERE id_Proj_Media LIKE '.$idProj);
+    while($temp = $result->fetch())
+    {
+      array_push($medias, $temp);
+    }
+    return $medias;
+  }
 }
 
 ?>
