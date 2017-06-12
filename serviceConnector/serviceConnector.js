@@ -6,30 +6,39 @@ class ServiceConnector {
     this.result = "";
 
     this.maxAttempt = 3;
+    this.tryCount = 0;
   }
 
   sendRequest() {
+    var jqxhr = $.ajax({
+        url: this.address,
+        async: true,
+        data: this.data,
+        method: this.method,
+        context: this,
+        error: function(xhr, textStatus, errorThrown) {
+          this.tryCount++;
+          if (this.tryCount <= this.maxAttempt) {
+            //try again
+            console.log("Connection to " + this.address + " failed, next try in 3 seconds, " + (this.maxAttempt - this.tryCount) + " attempts left...");
 
-    if (maxAttempt > 0) {
-      var jqxhr = $.ajax({
-          url: this.address,
-          async: true,
-          data: this.data,
-          method: this.method
-        })
-        .done(function(res) {
-          console.log(res.body);
-        })
-        .fail(function() {
-          maxAttempt--;
-          console.log("Connection to " + address + " failed, next try in 3 seconds, " + maxAttempt + " attempts left...");
-          setTimeout(function(){ this.sendRequest() }, 3000);
-        })
-        .always(function() {
+            var that = this;
+            setTimeout(function() {
+              that.sendRequest();
+            }, 3000);
 
-        });
-    }
-  }else {
-    this.maxAttempt = 3;
+
+            return;
+          }
+          return;
+
+        }
+      })
+      .done(function(res) {
+        console.log(res.body);
+      })
+      .always(function() {
+
+      });
   }
 }
