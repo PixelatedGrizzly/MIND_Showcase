@@ -49,6 +49,15 @@ class ConnectionInstance
     }
     return $projets;
   }
+    public function selectSevralProjects($nombre){
+    $projets = array();
+    $result =  $this->pdo->query('SELECT * from projet ORDER BY id_Proj DESC LIMIT 0,'.$nombre);
+    while($temp = $result->fetch())
+    {
+      array_push($projets, $temp);
+    }
+    return $projets;
+  }
 
   public function selectMediasFromProject($idProj){
     $medias = array();
