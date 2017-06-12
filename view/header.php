@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -18,7 +19,7 @@
     <div class="splasher">
     <img class="logo_splasher" src="./media/image/logo.jpg" alt="LOGO MindLab">
     </div>
-    <div class="container">
+
 <?php } ?>
 
 <nav class="navbar navbar-default">
@@ -31,14 +32,22 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">MIND Showcase</a>
+
+      <?php if (strpos($_SERVER['SCRIPT_NAME'], 'index.php') !== false){ ?>
+      <a class="navbar-brand" href="index.php">MIND Showcase</a>
+      <?php }else{ ?>
+      <a class="navbar-brand" href="../index.php">MIND Showcase</a>
+      <?php } ?>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <?php if(isset($_SESSION['connected'])){
+              if($_SESSION['connected'] == true){ ?>
       <ul class="nav navbar-nav">
         <li><a href="view/create-projet.php">Nouveau Projet</a></li>
       </ul>
+      <?php }} ?>
       <form class="navbar-form navbar-left">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search">
@@ -54,7 +63,5 @@
 
 
 <div class="project_list">
-
-</div>
 
 </div>

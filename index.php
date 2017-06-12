@@ -19,7 +19,7 @@ foreach ($projets as $key => $value) {
         <img class="gridPic" src="media/<?php echo($value2["type_Media"]."/".$value2["cheminFichier_Media"]); ?>" alt="projet<?php echo($value["id_Proj"]); ?>"></img>
       <?php } ?>
 
-      <a href='view/consulterProjet.php?id="<?php echo ($value["id_Proj"])?>"'><button type="button" name="button" class="btn btn-default">Voir plus</button></a>
+      <a href='view/consulter-projet.php?id="<?php echo ($value["id_Proj"])?>"'><button type="button" name="button" class="btn btn-default">Voir plus</button></a>
     </div>
 
   <?php if($key % 2 != 0){  ?> </div> <?php  }

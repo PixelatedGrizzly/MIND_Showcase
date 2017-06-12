@@ -1,4 +1,5 @@
     <?php
+    require_once('header.php');
     require_once '../datasource/connect.php';
      $connect= new ConnectionInstance();
      if($_GET['id'] !== null){

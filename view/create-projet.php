@@ -1,3 +1,4 @@
+<?php require_once('header.php') ?>
 <html>
     <head>
         <title>Créer un projet</title>
@@ -7,7 +8,7 @@
         <link href="../lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
     </head>
 <body>
-    <script type="text/javascript">     
+    <script type="text/javascript">
 
     </script>
 	<div class="row">
@@ -37,7 +38,7 @@
                     <p/>
                     <p style="display:none; font-style: italic; color: red"  id="erreur"></p>
                     <input class="btn btn-primary" type="submit" value="Submit" name="submit" id='submit_article'>
-                    <input class="btn btn-danger" type="reset" value="Reset">   
+                    <input class="btn btn-danger" type="reset" value="Reset">
                 </form>
             </div>
         </div>
