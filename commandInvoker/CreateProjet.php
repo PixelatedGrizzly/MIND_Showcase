@@ -34,8 +34,6 @@
         if($_FILES['photos']['name'][0]!=""){
             $path="../media/image/";
             $length=count($_FILES['photos']['name']);
-            echo "<pre>";
-            print_r($_FILES['photos']);
 
             for ($i=0;$i<$length;$i++){
                 $type_file=$_FILES['photos']['type'][$i];
