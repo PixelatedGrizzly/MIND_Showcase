@@ -14,10 +14,13 @@ class ServiceConnector {
   sendRequest(callback){
     var jqxhr = $.ajax({
         url: this.address,
-        data: JSON.stringify(this.data),
+        //data: JSON.stringify(this.data),
         method: this.method,
-        dataType: 'application/json',
-        beforeSend: function(xhr){xhr.setRequestHeader('Authorization', this.authorization);},
+        headers: {
+      'Content-Type':'application/x-www-form-urlencoded'
+        },
+        //dataType: 'application/x-www-form-urlencoded',
+        //beforeSend: function(xhr){xhr.setRequestHeader('Authorization', this.authorization);},
         context: this,
         error: function(xhr, textStatus, errorThrown) {
           console.log(errorThrown);
@@ -36,8 +39,8 @@ class ServiceConnector {
         }
       })
       .done(function(res) {
-        console.log(res);
-        //callback(res);
+        console.log("klmk");
+        callback(res);
       })
       .always(function() {
 

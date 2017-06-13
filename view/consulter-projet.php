@@ -1,7 +1,7 @@
 	    <?php
 	    require_once('header.php');
 	    require_once '../datasource/connect.php';
-      require_once('../commandInvoker/apiCommands.php');
+			require_once('../commandInvoker/apiCommands.php');
 	     $connect= new ConnectionInstance();
 	     if($_GET['id'] !== null){
 	       $id_Proj = $_GET['id'];
@@ -48,6 +48,7 @@
 
 									<div class="last-twitter-mentions col-md-4 panel panel-default" style="min-height:500px;overflow-y:scroll">
 									<h2>Mentions twitter</h2>
+
 									<?php
 								  $twitterMentions = ApiCommands::getTwitterMentions();
 									if(is_array($twitterMentions)){

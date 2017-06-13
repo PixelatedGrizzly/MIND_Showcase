@@ -11,7 +11,7 @@ class ConnectionInstance
   {
     $this->pdo = new PDO (
       'mysql:host=localhost;dbname=mind_showcase',
-      'root','root'
+      'root'
     );
   }
 
