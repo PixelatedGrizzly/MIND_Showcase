@@ -5,6 +5,10 @@ if (strpos($_SERVER['SCRIPT_NAME'], 'index.php') == false)
    $prefix = "";
  }
 require_once($prefix.'vendor/tmhOAuth/tmhOAuth.php');
+require_once($prefix.'vendor/patreon/patreon/src/patreon.php');
+
+
+
 
 class ApiCommands {
   static function  getTwitterMentions(){
@@ -40,6 +44,19 @@ static function getCoworkingSpaces(){
   }
   return $venues;
 }
+
+static function getPatreonData(){
+
+
+
+  $access_token = "XY1sMPEYrkuUJYUseY6fB73Ik2sNDm";
+  $refresh_token = "ABREDCNryaDrWsXUZN7iSF3vOZ0CvU";
+  $api_client = new Patreon\API($access_token);
+  return $api_client->__get_json("current_user/campaigns?include=rewards,creator,goals");
+
+}
+
+
 
 static function sendRequest($method, $url, $data = false)
 {

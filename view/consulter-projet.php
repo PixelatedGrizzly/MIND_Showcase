@@ -16,6 +16,8 @@
 	     ?>
 
 	    	<div class="container">
+
+
 	    		<div class="row">
 	    			<div class="col-md-8">
 	                <div class="titreProj"><?php echo $result['titre_Proj'] ?></div>
@@ -26,28 +28,46 @@
 	      <?php } ?>
 	                <div class="contenuProj"><?php echo $actualite['contenu'] ?> </div>
 
+									<div class="col-md-8 panel panel-default" style="width:100%;padding:0;">
+										<?php $patreonData = ApiCommands::getPatreonData(); ?>
+											<div class="panel-heading">Données de Patreon <?php echo '<img style="height: 24px;float: right;" src="'.$patreonData["included"][0]["attributes"]["thumb_url"].'" />'; ?></div>
+											<div class="panel-body" style="position:relative;" id="patreonWindow">
+												<?php
+
+												echo '<h3>'.$patreonData["included"][0]["attributes"]["full_name"].'</h3>';
+												echo 'But du projet : '.$patreonData["data"][0]["attributes"]["creation_name"].'<br />Nombre de mécènes : '.$patreonData["data"][0]["attributes"]["patron_count"].'<br />';
+												echo 'Contact : '.$patreonData["included"][0]["attributes"]["email"];
+												echo "<hr />";
+												echo "<h3>Paliers</h3>";
+												echo $patreonData["included"][3]["attributes"]['title']. ' : '.$patreonData["included"][3]["attributes"]['amount'].'<br />';
+												echo $patreonData["included"][3]["attributes"]['description'];
+												?>
+												<a href="https://www.patreon.com/bePatron?u=6476899" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+											</div>
+									</div>
+
 
 	                <div id="player" ></div>
 	                <div style="padding-top: 20px;">
 
-	                <div class="btn_social">
-	                <div class="btn_share">
-	    <a href="https://twitter.com/share" class="twitter-share-button" data-text="MINF Showcase" data-via="MIND_Showcase" data-size="large">Tweet</a>
-	    </div>
-	    <div id="fb-root" class="btn_share"></div>
+	            <div class="btn_social">
+	    					<div id="fb-root" class="btn_share"></div>
 
 
 	            <!-- Your share button code -->
 	            <div class="fb-share-button" data-href="https://www.kickstarter.com/" data-layout="button" data-size="large" data-mobile-iframe="true">
 	                <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Partager</a>
+	            	</div>
+	    					</div>
+	    					</div>
+	    					<div class="fb-comments" data-href="http://localhost/projet/MIND_Showcase/view/consulterProjet.php" data-numposts="10"></div>
 	            </div>
-	    </div>
-	    </div>
-	    <div class="fb-comments" data-href="http://localhost/projet/MIND_Showcase/view/consulterProjet.php" data-numposts="10"></div>
-	                </div>
 
-									<div class="last-twitter-mentions col-md-4 panel panel-default" style="min-height:500px;overflow-y:scroll">
-									<h2>Mentions twitter</h2>
+						<div class="last-twitter-mentions col-md-4 panel panel-default" style="min-height:500px;overflow-y:scroll;position:relative">
+									<h2>Mentions twitter </h2>
+									 <div class="btn_share" style="position:absolute;right: 26px;top: 25px;">
+										    <a href="https://twitter.com/share" class="twitter-share-button" data-text="MINF Showcase" data-via="MIND_Showcase" data-size="large">Tweet</a>
+									 </div>
 
 									<?php
 								  $twitterMentions = ApiCommands::getTwitterMentions();
@@ -63,35 +83,25 @@
 									</div>
 
 
+					<div class="col-md-4">
+					<?php
+					$projets = $connect->selectSevralProjects(4);
+					foreach ($projets as $key => $value) {
+	  			$medias = $connect->selectMediasFromProject($value["id_Proj"]);
+	   			?>
+					<div>
+	      		<h3><?php echo($value["titre_Proj"]); ?></h3>
+	      		<p><?php echo($value["desc_Proj"]); ?></p>
+	      		<?php foreach ($medias as $key2 => $value2){ ?>
+	        		<img class="gridPic" src="../media/<?php echo($value2["type_Media"]."/".$value2["cheminFichier_Media"]); ?>" alt="projet<?php echo($value["id_Proj"]); ?>"></img>
+	      		<?php } ?>
 
-	<div class="col-md-4">
-
-	<?php
-	$projets = $connect->selectSevralProjects(4);
-	foreach ($projets as $key => $value) {
-	  $medias = $connect->selectMediasFromProject($value["id_Proj"]);
-	   ?>
-	<div>
-	      <h3><?php echo($value["titre_Proj"]); ?></h3>
-	      <p><?php echo($value["desc_Proj"]); ?></p>
-	      <?php foreach ($medias as $key2 => $value2){ ?>
-	        <img class="gridPic" src="../media/<?php echo($value2["type_Media"]."/".$value2["cheminFichier_Media"]); ?>" alt="projet<?php echo($value["id_Proj"]); ?>"></img>
-	      <?php } ?>
-
-	      <a href='consulter-projet.php?id=<?php echo ($value["id_Proj"])?>'><button type="button" name="button" class="btn btn-default">Voir plus</button></a>
-	    </div>
-	 <?php  }
-	 ?>
-	</div>
-
-
-
-
-
-
+	      		<a href='consulter-projet.php?id=<?php echo ($value["id_Proj"])?>'><button type="button" name="button" class="btn btn-default">Voir plus</button></a>
 	    		</div>
-
-	        </div>
+	 			<?php  } ?>
+				</div>
+	    </div>
+	  </div>
 
 
 
