@@ -57,6 +57,11 @@
                     </div>
                     <p/>
                     <p style="display:none; font-style: italic; color: red"  id="erreur"></p>
+                      <div class="form-group">
+                        <label>URL Video</label>
+                        <input type="text" class="form-control" name="url_video">
+                    </div>
+                    <div id="youtube"></div>
                     <input class="btn btn-primary" type="submit" value="Submit" name="submit" id='submit_article'>
                     <input class="btn btn-danger" type="reset" value="Reset">
                 </form>
@@ -64,5 +69,6 @@
         </div>
     </div>
     <script type="text/javascript" src="../instagram/app.js"></script>
+    <script type="text/javascript" src="../youtube/js/app.js"></script>
 </body>
 </html>
