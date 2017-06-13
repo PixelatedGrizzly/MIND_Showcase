@@ -22,3 +22,9 @@ ZHgu21Kb8G4SmECatZlwj8vJhnintK
 facebook credentials:
 mind.showcase@tutanota.com
 pass : lo102016p17
+
+
+Instagram:
+lee.vphhuc@gmail.com
+pass: lo102016
+access_token: '5588470137.e821d32.7934167dc002480b9cf9bfd5542adfa7'
