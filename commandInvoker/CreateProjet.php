@@ -8,9 +8,11 @@
         $nb_part=addslashes(trim($_POST['nb_part']));
         $actualite=addslashes(trim($_POST['actualite']));
         $photo_choisi=addslashes(trim($_POST['photo_choisi']));
+        $url_video=addslashes(trim($_POST['url_video']));
 
 
-        $id_Util_Proj=1; //test, on va changer apès par session['utilisateur']
+        session_start(); 
+        $id_Util_Proj=$_SESSION['id_Util']; 
 
         $data=array(
             'titre_Proj'=>$titre,
@@ -36,13 +38,16 @@
             $length=count($_FILES['photos']['name']);
 
             for ($i=0;$i<$length;$i++){
-                $type_file=$_FILES['photos']['type'][$i];
+                $type_file="";
+                if(strpos("1".$_FILES['photos']['type'][$i],"image")){
+                    $type_file="image";
+                }
                 $name_file=$_FILES['photos']['name'][$i];
                 $tmp_name=$_FILES['photos']['tmp_name'][$i];
                 move_uploaded_file($tmp_name, $path.$name_file);
 
                 $data2=array(
-                    "cheminFichier_Media"=>$path.$name_file,
+                    "cheminFichier_Media"=>$name_file,
                     "type_Media"=>$type_file,
                     "id_Proj_Media"=>$id_Proj
                 );
@@ -58,8 +63,16 @@
             $connect->insert('media',$data2); 
         }
 
+        if($url_video!=''){
+            $data2=array(
+                "cheminFichier_Media"=>$url_video,
+                "type_Media"=>'video',
+                "id_Proj_Media"=>$id_Proj
+            );
+            $connect->insert('media',$data2); 
+        }
 
     }
 
-
+//header('Location: ../index.php');
 ?>

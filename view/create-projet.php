@@ -62,10 +62,10 @@
                         <label>URL Video</label>
                         <input type="text" class="form-control" name="url_video">
                     </div>
-                    <div id="youtube"></div>
-                    <input class="btn btn-primary" type="submit" value="Submit" name="submit" id='submit_article'>
+                    <input class="btn btn-primary" type="submit" value="Submit" name="submit" id='submit'>
                     <input class="btn btn-danger" type="reset" value="Reset">
                 </form>
+                <div id="youtube"></div>
             </div>
         </div>
     </div>

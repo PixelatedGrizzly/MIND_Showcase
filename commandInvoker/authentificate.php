@@ -14,13 +14,14 @@
           if (! session_id()) {
             session_start();
           }
+          $_SESSION['id_Util'] = $user["id_Util"];
           $_SESSION['connected'] = true;
         }
       }
     }
     else
     {
-      print("no try");
+      echo "no try";
     }
   }
   else

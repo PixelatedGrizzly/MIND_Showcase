@@ -65,7 +65,18 @@
         <button type="submit" class="btn btn-default">Search</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
+      <?php 
+        if (session_id() && isset($_SESSION['connected']) && $_SESSION['connected']===true) {
+      ?>
+        <li><a href="view/create-projet.php"><button class="btn btn-primary">Ajouter un projet</button></a></li>
+        <li><a href="commandInvoker/Deconnecter.php">Déconnexion</a></li>
+      <?php 
+        }else{
+      ?>
         <li><a href="view/connectionForm.php">Connexion</a></li>
+      <?php 
+        };
+      ?>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
