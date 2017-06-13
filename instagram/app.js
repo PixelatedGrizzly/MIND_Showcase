@@ -59,11 +59,13 @@ $( document ).ready(function() {
                 $instagram.css("height","50px");
                 $instagram.append('Aucun valeur correspandante à la recherche!');
             }else{
+                $instagram.css("width","100%");
+                $instagram.css("height","500px");
+                $instagram.css("border","solid 1px black");
+                $instagram.css("padding","10px");
                 for ( var i = 0; i < response.data.length; i++ ) {
                     imageUrl = response.data[i].images.low_resolution.url;
-                    $instagram.css("width","100%");
-                    $instagram.css("height","500px");
-                    $instagram.append( '<div class="thumb" style="display:block; background-image: url(' + imageUrl + '" />' );
+                    $instagram.append( '<div class="thumb" style="display:block; background-image: url(' + imageUrl + ')" />' );
                 }
             }
         });
@@ -71,18 +73,21 @@ $( document ).ready(function() {
 
     function choisir(photo){
         var url=$(photo).css("background-image");
-        $("#photo_choisi").val(url);
+        var url2=url.substr(5,url.length-7);
+        $("#photo_choisi").val(url2);
         $(photo).css("border","solid black 2px");
+
     }
 
     $('#instagram').on("click",".thumb",function(){
         $(".thumb").css("border","none");
         choisir(this);
+
+    })
+    $("#ajouter_upload").on("click",function(){
+        $("#les_photos").append("<input class='form' type='file' name='photos[]' >"); 
     })
 
-    $("#ajouter_upload").on("click",function(){
-        $("#les_photos").append("<input class='form' type='file' name='photos[]' >");
-    })
 
 
 });

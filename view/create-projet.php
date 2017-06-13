@@ -53,8 +53,8 @@
                         </div>
                     </div>
                     <div id="instagram" style="display:block;">
-                        <input type="hidden" name="photo_choisi" id="photo_choisi">
                     </div>
+                    <input type="hidden" name="photo_choisi" id="photo_choisi">
                     <p/>
                     <p style="display:none; font-style: italic; color: red"  id="erreur"></p>
                     <input class="btn btn-primary" type="submit" value="Submit" name="submit" id='submit_article'>
