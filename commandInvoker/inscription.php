@@ -7,12 +7,18 @@
 session_start();
 require_once '../datasource/connect.php';
      $connect= new ConnectionInstance();
-if ($_SESSION['valide']==true) {
-    $nom = filter_var($_GET['n'],FILTER_SANITIZE_SPECIAL_CHARS);
-    $prenom = filter_var($_GET['pr'],FILTER_SANITIZE_SPECIAL_CHARS);
-    $login = filter_var($_GET['l'],FILTER_SANITIZE_SPECIAL_CHARS);
-    $pass = filter_var($_GET['pass'],FILTER_SANITIZE_SPECIAL_CHARS);
-    $email = filter_var($_GET['em'],FILTER_SANITIZE_SPECIAL_CHARS);
+ if((isset($_POST['ok']))){
+    $secret = "6Lf6RiUUAAAAAMdnINSQtIqamI02YOGPf4FlatpJ";
+    $response = $_POST['g-recaptcha-response'];
+    $remoteip = $_SERVER['REMOTE_ADDR'];
+    $url = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$response&remoteip=$remoteip");
+     $result = json_decode($url,true);
+    if($result['success']== 1){
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $login = $_POST['login'];
+    $pass = $_POST['mdp'];
+    $email = $_POST['email'];
          $data=array(
             'nom_Util'=>$nom,
             'prenom_Util'=>$prenom,
@@ -22,6 +28,7 @@ if ($_SESSION['valide']==true) {
             );
 
         $connect->insert('utilisateur',$data);
+        }
 ?>
  <fieldset>
             <div style="margin-left:50px; width:600px">
@@ -45,4 +52,7 @@ if ($_SESSION['valide']==true) {
             </div>
             <div><a href=""></a></div>
         </fieldset>
-        <<?php } else include_once('../view/inscription.php');?>
+        <?php } else { include_once('../view/inscription.php');?>
+        
+                <div class="col-md-10 alert alert-danger" style="font-size:12px;left:-12px;margin-top:5px"><strong>WARNING!</strong> Les informations saisies ne sont pas valides.Veuillez les verifier</div>
+                <?php } ?>

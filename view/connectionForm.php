@@ -10,6 +10,9 @@ if (session_id() && isset($_SESSION['connected']) && $_SESSION['connected']===tr
   print("Salut, je suis connecté");
 }
 else {
-  print("Je suis pas connecté");
+  print("<p>Je suis pas connecté</p>");
+?> 
+<a href="inscription.php" data-patreon-widget-type="become-patron-button">s'inscrire</a>
+<?php 
 }
 ?>
